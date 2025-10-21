@@ -1,0 +1,2 @@
+- barebone file just for registering first superadmin account
+- role has to be changed via database it self
