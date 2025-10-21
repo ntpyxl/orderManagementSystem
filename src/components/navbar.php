@@ -13,8 +13,14 @@ $parts = explode("/", trim($filePath, "/"));
 	</div>
 	<div class="flex flex-row space-x-3">
 		<?php if(strtolower($parts[2]) !== "admin") {?>
-			<div class="px-3 py-1 border-2 border-black rounded-4xl hover:bg-black hover:text-amber-200  duration-150 cursor-pointer">Cashier Dashboard</div>
-			<div class="px-3 py-1 border-2 border-black rounded-4xl hover:bg-black hover:text-amber-200  duration-150 cursor-pointer">Cart</div>
+			<button
+				class="px-3 py-1 border-2 border-black rounded-4xl hover:bg-black hover:text-amber-200 duration-150 cursor-pointer select-none"
+				onclick="window.location.href='admin'">
+				Cashier Dashboard</button>
+			<button
+				class="px-3 py-1 border-2 border-black rounded-4xl hover:bg-black hover:text-amber-200 duration-150 cursor-pointer select-none"
+				onclick="window.location.href='#">
+				Cart</button>
 		<?php } ?>
 	</div>
 </div>

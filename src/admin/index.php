@@ -9,11 +9,17 @@
 </head>
 <body class="bg-cyan-100">
     <?php include '../components/navbar.php'; ?>
+
+    <div class="mx-5 mt-5">
+        <div class="space-x-1">
+            <button class="px-3 py-1 bg-amber-200 hover:bg-amber-50 duration-150 cursor-pointer select-none">Inventory</button>
+            <button class="px-3 py-1 bg-amber-200 hover:bg-amber-50 duration-150 cursor-pointer select-none">Accounts</button>
+            <button class="px-3 py-1 bg-amber-200 hover:bg-amber-50 duration-150 cursor-pointer select-none">Transactions</button>
+        </div>
+        <div id="mainSection" class="bg-amber-50">
+            <?php include 'components/inventory.php'; ?>
+        </div>
+    </div>
     
 </body>
 </html>
-
-- index page of admin
-- if not logged in, should redir to login.php
-
-- shows inventory, transaction history, and for superadmins, account management components
