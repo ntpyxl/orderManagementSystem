@@ -7,6 +7,11 @@ $action = $input['action'] ?? '';
 $formData = $input['data'] ?? '';
 
 if($action === "addItem") {
-    echo json_encode(['status' => 'success', 'data' => $formData]);
+    $statement = $pdo->prepare('INSERT INTO inventory (item_name, item_image, price, added_by) VALUES (?, ?, ? ,?)');
+    $statement->execute([$formData['itemName'], "image", $formData['itemPrice'], 1]);
+    # TODO: CHANGE ITEM IMAGE TO BE FORMDATA'S ITEM IMAGE
+    # TODO: CHANGE ADDED BY TO BE SESSION USER ID
+
+    echo json_encode(['status' => 'success']);
     exit;
 }
