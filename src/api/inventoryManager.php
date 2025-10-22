@@ -12,6 +12,17 @@ if($action === "addItem") {
     # TODO: CHANGE ITEM IMAGE TO BE FORMDATA'S ITEM IMAGE
     # TODO: CHANGE ADDED BY TO BE SESSION USER ID
 
-    echo json_encode(['status' => 'success']);
+    echo json_encode(['success' => true]);
     exit;
+}
+
+if($action == "getInventoryItems") {
+    $search = '%' . ($input['search'] ?? '') . '%';
+    $statement = $pdo->prepare('SELECT * FROM inventory
+                            ORDER BY item_name DESC');
+        
+    $statement->execute([]);
+    $inventoryItems = $statement->fetchAll();
+
+    echo json_encode(['success' => true, 'data' => $inventoryItems]);
 }

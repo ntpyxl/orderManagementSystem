@@ -1,3 +1,5 @@
+const BASE_URL = `${window.location.origin}/orderManagementSystem/src/`;
+
 $("#inventoryAddItemButton").on("click", function (event) {
 	event.preventDefault();
 	$("#inventoryAddItemModal").addClass("flex").removeClass("hidden");
@@ -27,7 +29,7 @@ async function inventoryAddItem(event) {
 	formData.itemPrice = parseInt(formData.itemPrice);
 
 	try {
-		const response = await fetch("../api/inventoryManager.php", {
+		const response = await fetch(`${BASE_URL}/api/inventoryManager.php`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
