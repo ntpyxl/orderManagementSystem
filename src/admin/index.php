@@ -6,6 +6,8 @@
     <title>Pixelshop</title>
 
     <link href="../styles.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body class="bg-cyan-100">
     <?php include '../components/navbar.php'; ?>
@@ -21,5 +23,7 @@
         </div>
     </div>
     
+    <?php include 'components/addItemModal.php'; ?>
+    <script src="../scripts/inventoryScript.js"></script>
 </body>
 </html>
