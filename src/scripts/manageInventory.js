@@ -1,5 +1,3 @@
-const BASE_URL = `${window.location.origin}/orderManagementSystem/src/`;
-
 $("#inventoryAddItemButton").on("click", function (event) {
 	event.preventDefault();
 	$("#inventoryAddItemModal").addClass("flex").removeClass("hidden");

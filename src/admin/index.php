@@ -24,6 +24,8 @@
     </div>
     
     <?php include 'components/addItemModal.php'; ?>
+
+    <script src="../scripts/script.js"></script>
     <script src="../scripts/manageInventory.js"></script>
 </body>
 </html>

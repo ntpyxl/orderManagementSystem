@@ -25,6 +25,7 @@
     <div id="inventoryBody" class="flex flex-row flex-wrap mx-12 mt-5 justify-center space-x-5 space-y-5">
     </div>
 
+    <script src="scripts/script.js"></script>
     <script src="scripts/loadInventory.js"></script>
 </body>
 </html>

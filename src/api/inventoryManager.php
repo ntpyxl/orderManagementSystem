@@ -12,7 +12,7 @@ if($action === "addItem") {
     # TODO: CHANGE ITEM IMAGE TO BE FORMDATA'S ITEM IMAGE
     # TODO: CHANGE ADDED BY TO BE SESSION USER ID
 
-    echo json_encode(['success' => true]);
+    echo json_encode(['success' => true, 'data' => $formData]);
     exit;
 }
 

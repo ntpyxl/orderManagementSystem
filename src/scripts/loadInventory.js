@@ -1,5 +1,3 @@
-const BASE_URL = `${window.location.origin}/orderManagementSystem/src/`;
-
 $(document).ready(function () {
 	loadInventory();
 });
