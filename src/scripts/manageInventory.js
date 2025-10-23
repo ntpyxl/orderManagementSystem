@@ -27,36 +27,58 @@ async function inventoryAddItem(event) {
 	formData.itemPrice = parseInt(formData.itemPrice);
 
 	try {
+		// Wait for image upload to complete
+		const uploadItemImageResult = await uploadItemImage();
+		console.log(uploadItemImageResult);
+
+		if (!uploadItemImageResult.success) {
+			throw uploadItemImageResult.message || "Image upload failed";
+		}
+		formData.itemImage = uploadItemImageResult.fileName;
+
 		const response = await fetch(`${BASE_URL}/api/inventoryManager.php`, {
 			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
+			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify({ action: "addItem", data: formData }),
 		});
 
 		const result = await response.json();
 
-		if (response.ok) {
+		if (result.success) {
 			Swal.fire({
 				title: "Successfully added item!",
 				icon: "success",
 				confirmButtonColor: "#14b8a6",
 			});
 		} else {
-			Swal.fire({
-				title: "Failed to add item!",
-				text: result.message || "Something else went wrong!",
-				icon: "error",
-				confirmButtonColor: "#ef4444",
-			});
+			throw result.message || "Something else went wrong!";
 		}
 	} catch (error) {
 		Swal.fire({
 			title: "Failed to add item!",
-			text: result.message || "Something else went wrong!",
+			text: error?.message || error || "Something else went wrong!",
 			icon: "error",
 			confirmButtonColor: "#ef4444",
 		});
+	}
+}
+
+async function uploadItemImage() {
+	const itemImage = $("#itemImageField")[0].files[0];
+	if (!itemImage) return { success: false, message: "No image selected" };
+
+	const formData = new FormData();
+	formData.append("action", "uploadItemImage");
+	formData.append("itemImage", itemImage);
+
+	try {
+		const response = await fetch(`${BASE_URL}/api/inventoryManager.php`, {
+			method: "POST",
+			body: formData,
+		});
+		return await response.json();
+	} catch (error) {
+		console.error("Upload error:", error);
+		return { success: false, message: error };
 	}
 }

@@ -32,7 +32,7 @@ async function loadInventory(search = "") {
 			response.data.forEach((item) => {
 				itemCards += `<div class="flex flex-col w-72 h-full p-3 rounded-xl bg-amber-50 drop-shadow-lg">
                                 <div class="mx-auto my-3 p-2 rounded-xl w-fit">
-                                    <img src="${item.item_image}" alt="${item.item_name}" class="w-56 h-56 border text-center object-contain select-none">
+                                    <img src="${BASE_URL}/images/${item.item_image}" alt="${item.item_name}" class="w-56 h-56 border text-center object-contain select-none">
                                 </div>
 
                                 <h5 class="font-bold text-xl">${item.item_name}</h5>
