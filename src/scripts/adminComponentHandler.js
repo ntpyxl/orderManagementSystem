@@ -1,7 +1,7 @@
 function showComponent(event, section) {
 	event.preventDefault();
 
-	const sections = ["inventory", "accounts", "transactions"];
+	const sections = ["inventory", "cashiers", "transactions"];
 
 	sections.forEach((name) => {
 		$(`.${name}Component`).addClass("hidden");

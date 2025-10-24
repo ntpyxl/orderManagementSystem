@@ -17,7 +17,7 @@ if ($action === "addItem") {
         1 // TODO: replace with session user id
     ]);
 
-    echo json_encode(['success' => true, 'data' => $formData]);
+    echo json_encode(['success' => true]);
     exit;
 }
 

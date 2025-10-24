@@ -23,19 +23,22 @@ if(!isset($_SESSION['user_id'])) {
     <div class="mx-5 mt-5">
         <div class="space-x-1">
             <button id="inventoryNavButton" onclick="showComponent(event, 'inventory')" class="px-3 py-1 bg-amber-50 hover:bg-amber-50 duration-150 cursor-pointer select-none">Inventory</button>
-            <button id="accountsNavButton" onclick="showComponent(event, 'accounts')" class="px-3 py-1 bg-amber-200 hover:bg-amber-50 duration-150 cursor-pointer select-none">Accounts</button>
+            <button id="cashiersNavButton" onclick="showComponent(event, 'cashiers')" class="px-3 py-1 bg-amber-200 hover:bg-amber-50 duration-150 cursor-pointer select-none">Cashiers</button>
             <button id="transactionsNavButton" onclick="showComponent(event, 'transactions')" class="px-3 py-1 bg-amber-200 hover:bg-amber-50 duration-150 cursor-pointer select-none">Transactions</button>
         </div>
         <div id="mainSection" class="bg-amber-50">
             <span class="inventoryComponent"><?php include 'components/inventory.php'; ?></span>
-            <span class="accountsComponent hidden"><?php include 'components/accountManagement.php'; ?></span>
+            <span class="cashiersComponent hidden"><?php include 'components/cashiersManagement.php'; ?></span>
+            <span class="transactionsComponent hidden"><?php include 'components/transactionHistory.php'; ?></span>
         </div>
     </div>
     
     <span class="inventoryComponent"><?php include 'components/addItemModal.php'; ?></span>
+    <span class="cashiersComponent"><?php include 'components/addCashierModal.php'; ?></span>
 
-    <script src="../scripts/adminComponentHandler.js"></script>
     <script src="../scripts/script.js"></script>
+    <script src="../scripts/adminComponentHandler.js"></script>
     <script src="../scripts/manageInventory.js"></script>
+    <script src="../scripts/manageCashiers.js"></script>
 </body>
 </html>

@@ -44,7 +44,7 @@ async function inventoryAddItem(event) {
 
 		const result = await response.json();
 
-		if (result.success) {
+		if (response.ok) {
 			Swal.fire({
 				title: "Successfully added item!",
 				icon: "success",

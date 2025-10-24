@@ -504,6 +504,21 @@
   .underline-offset-4 {
     text-underline-offset: 4px;
   }
+  .placeholder-gray-400 {
+    &::placeholder {
+      color: var(--color-gray-400);
+    }
+  }
+  .placeholder-gray-400\/50 {
+    &::placeholder {
+      color: color-mix(in srgb, oklch(70.7% 0.022 261.325) 50%, transparent);
+      @supports (color: color-mix(in lab, red, red)) {
+        & {
+          color: color-mix(in oklab, var(--color-gray-400) 50%, transparent);
+        }
+      }
+    }
+  }
   .shadow-xl {
     --tw-shadow: 0 20px 25px -5px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 8px 10px -6px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
@@ -634,6 +649,25 @@
   .focus\:text-amber-50 {
     &:focus {
       color: var(--color-amber-50);
+    }
+  }
+  .focus\:placeholder-gray-500 {
+    &:focus {
+      &::placeholder {
+        color: var(--color-gray-500);
+      }
+    }
+  }
+  .focus\:placeholder-gray-500\/50 {
+    &:focus {
+      &::placeholder {
+        color: color-mix(in srgb, oklch(55.1% 0.027 264.364) 50%, transparent);
+        @supports (color: color-mix(in lab, red, red)) {
+          & {
+            color: color-mix(in oklab, var(--color-gray-500) 50%, transparent);
+          }
+        }
+      }
     }
   }
   .sm\:mx-24 {
