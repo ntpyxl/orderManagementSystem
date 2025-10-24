@@ -8,7 +8,7 @@ $formData = $input['data'] ?? '';
 
 if ($action === "addCashier") {
     if($formData['password'] !== $formData['confirmPassword']) {
-        echo json_encode(['success' => false, 'message' => "Password does not match!", 'data' => $formData]);
+        echo json_encode(['success' => false, 'message' => "Password does not match!"]);
         exit;
     }
 
@@ -22,19 +22,25 @@ if ($action === "addCashier") {
         $formData['firstName'],
         $formData['lastName'],
         $formData['email'],
-        $formData['password'],
+        $hashedPassword,
         $formData['userRole'],
         $formData['contactNumber']
     ]);
 
-    echo json_encode(['success' => true, 'data' => $formData]);
+    echo json_encode(['success' => true]);
     exit;
 }
 
 if($action == "getCashiers") {
     $search = '%' . ($input['search'] ?? '') . '%';
     $statement = $pdo->prepare(
-        'SELECT * FROM cashier ORDER BY last_name ASC'
+        'SELECT 
+            cashier_id,
+            first_name, last_name,
+            user_email, user_role, user_status,
+            contact_number,
+            date_added
+        FROM cashier ORDER BY last_name ASC'
     );
     $statement->execute();
     $inventoryItems = $statement->fetchAll();

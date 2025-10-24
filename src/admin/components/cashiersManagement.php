@@ -10,7 +10,20 @@
     </select>
 </div>
 
-<div id="cashiersBody" class="flex flex-row flex-wrap px-10 py-5 justify-center space-x-5 space-y-5">
-</div>
+<div class="px-10 py-5">
+    <table>
+        <tr>
+            <th class="border px-2">ID</th>
+            <th class="border px-2">Last Name</th>
+            <th class="border px-2">First Name</th>
+            <th class="border px-2">Email</th>
+            <th class="border px-2">Role</th>
+            <th class="border px-2">Status</th>
+            <th class="border px-2">Contact Number</th>
+            <th class="border px-2">Date Added</th>
+        </tr>
+        <tbody id="cashiersBody"></tbody>
+    </table>
+<div>
 
-<script src="../scripts/loadInventory.js"></script>
+<script src="../scripts/loadCashiers.js"></script>
