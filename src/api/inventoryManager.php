@@ -14,7 +14,7 @@ if ($action === "addItem") {
         $formData['itemName'],
         $formData['itemImage'],
         $formData['itemPrice'],
-        1 // TODO: replace with session user id
+        $_SESSION['cashier_id']
     ]);
 
     echo json_encode(['success' => true]);
@@ -38,9 +38,11 @@ if (isset($_POST['action']) && $_POST['action'] === 'uploadItemImage') {
                 'fileName' => $newFileName
             ]);
         } else {
+            http_response_code(400);
             echo json_encode(['success' => false, 'message' => 'Upload failed.']);
         }
     } else {
+        http_response_code(400);
         echo json_encode(['success' => false, 'message' => 'No file received.']);
     }
     exit;

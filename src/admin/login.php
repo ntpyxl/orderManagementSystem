@@ -1,7 +1,7 @@
 <?php 
 session_start();
 
-if(isset($_SESSION['user_id'])) {
+if(isset($_SESSION['cashier_id'])) {
     header("Location: index.php");
 }
 ?>
@@ -63,6 +63,7 @@ if(isset($_SESSION['user_id'])) {
         </p>
     </div>
 
+    <script src="../scripts/script.js"></script>
     <script src="../scripts/loginCashier.js"></script>
 </body>
 </html>

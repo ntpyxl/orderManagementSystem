@@ -31,6 +31,40 @@ if ($action === "addCashier") {
     exit;
 }
 
+if($action == "loginCashier") {
+    $statement = $pdo->prepare('SELECT * FROM cashier WHERE user_email = ?');
+
+    $statement->execute([$formData['email']]);
+    $userData = $statement->fetch();
+
+    // email check
+    if($userData === false) {
+        http_response_code(400);
+        echo json_encode(['success' => false, 'message' => 'Email is not registered.']);
+        exit;
+    }
+
+    // password check
+    if(!password_verify($formData['password'], $userData['user_password'])) {
+        http_response_code(400);
+        echo json_encode(['success' => false, 'message' => 'Incorrect password.']);
+        exit;
+    }
+
+    // account status check
+    if($userData['user_status'] === 'suspended') {
+        http_response_code(400);
+        echo json_encode(['success' => false, 'message' => 'Account is suspended.']);
+        exit;
+    }
+
+    $_SESSION['cashier_id'] = $userData['cashier_id'];
+    $_SESSION['first_name'] = $userData['first_name'];
+    $_SESSION['user_role'] = $userData['user_role'];
+
+    echo json_encode(['success' => true]);
+}
+
 if($action == "getCashiers") {
     $search = '%' . ($input['search'] ?? '') . '%';
     $statement = $pdo->prepare(

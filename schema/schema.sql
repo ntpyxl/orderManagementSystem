@@ -26,3 +26,5 @@ CREATE TABLE transactions (
     cashier_id INT NOT NULL,
     date_transacted TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+INSERT INTO cashier (first_name, last_name, user_email, user_password, user_role, contact_number) VALUES ('Admin', 'Super', 'superadmin@email.com', '$2y$10$.wXbyp8Xm6wO2oDyPFSy7u/2P.OubagCCpZvm7g8gmeZDN1dRU8C2', 'superadmin', '0912 345 6789')
