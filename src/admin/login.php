@@ -1,3 +1,11 @@
+<?php 
+session_start();
+
+if(isset($_SESSION['user_id'])) {
+    header("Location: index.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +23,7 @@
     
     <div class="sm:mx-24 md:mx-48 lg:mx-72 mt-5">
         <button class="ml-5 px-3 py-1 border-2 border-black rounded-4xl hover:bg-black hover:text-amber-50 duration-150 cursor-pointer select-none" onclick="window.location.href='../'">Return to Shopping</button>
-        <form class="flex flex-col mx-12 mt-5 p-3 rounded-xl bg-amber-50 space-y-3 drop-shadow-lg">
+        <form onsubmit="loginUser(event)" class="flex flex-col mx-12 mt-5 p-3 rounded-xl bg-amber-50 space-y-3 drop-shadow-lg">
             <h3 class="mt-2 text-center font-semibold text-2xl">
                 Admin Login
             </h3>
@@ -54,6 +62,7 @@
             </a>
         </p>
     </div>
-    
+
+    <script src="../scripts/loginUser.js"></script>
 </body>
 </html>
