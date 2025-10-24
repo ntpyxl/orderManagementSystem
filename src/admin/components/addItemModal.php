@@ -25,8 +25,8 @@
                         id="itemImageField"
                         name="itemImage"
                         class="w-96 ml-1 px-2 py-1 border file:px-3 file:mr-2 file:border file:rounded-2xl cursor-pointer"
-                        
-                    > <!-- TODO: REQUIRED LATER -->
+                        required
+                    >
                 </div>
 
                 <div class="flex">

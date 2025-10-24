@@ -8,8 +8,7 @@ $formData = $input['data'] ?? '';
 
 if ($action === "addItem") {
     $statement = $pdo->prepare(
-        'INSERT INTO inventory (item_name, item_image, price, added_by)
-         VALUES (?, ?, ?, ?)'
+        'INSERT INTO inventory (item_name, item_image, price, added_by) VALUES (?, ?, ?, ?)'
     );
     $statement->execute([
         $formData['itemName'],
