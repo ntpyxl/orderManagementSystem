@@ -66,7 +66,7 @@ function createInventoryCard(item, layout) {
 	}
 
 	return `
-		<div class="flex flex-col w-72 h-full p-3 rounded-xl bg-amber-50 drop-shadow-lg">
+		<div class="flex flex-col m-3 w-72 h-full p-3 rounded-xl bg-amber-50 drop-shadow-lg">
 			<div class="mx-auto my-3 p-2 rounded-xl w-fit">${image}</div>
 			${info}
 			${action}

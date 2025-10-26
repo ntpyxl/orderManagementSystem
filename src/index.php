@@ -14,7 +14,7 @@
         <div class="col-span-12 md:col-span-9">
             <?php include 'components/navbar.php'; ?>
 
-            <div id="inventoryBody" class="flex flex-row flex-wrap mx-12 mt-8 justify-center space-x-5 space-y-5">
+            <div id="inventoryBody" class="flex flex-row flex-wrap mx-12 mt-8 justify-center">
             </div>
         </div>
 
