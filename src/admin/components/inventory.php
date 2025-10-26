@@ -14,3 +14,8 @@
 </div>
 
 <script src="../scripts/loadInventory.js"></script>
+<script>
+    $(document).ready(function () {
+        loadInventory(search = "", layout = "admin");
+    });
+</script>

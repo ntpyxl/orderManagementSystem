@@ -27,5 +27,10 @@
 
     <script src="scripts/script.js"></script>
     <script src="scripts/loadInventory.js"></script>
+    <script>
+        $(document).ready(function () {
+            loadInventory(search = "", layout = "customer");
+        });
+    </script>
 </body>
 </html>
