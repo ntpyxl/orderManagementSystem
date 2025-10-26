@@ -12,3 +12,7 @@
     ```bash
     npx @tailwindcss/cli -i ./import.css -o ./src/styles.css --watch
     ```
+
+## Superadmin
+
+Provided superadmin password in the schema.sql file is `superadmin`
