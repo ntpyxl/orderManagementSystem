@@ -39,16 +39,62 @@ async function loadCashier(search = "") {
 }
 
 function createCashierRow(cashier) {
+	const image = `
+				<img src="${BASE_URL}/assets/defaultUserImage.jpg" 
+					alt="${cashier.first_name} ${cashier.last_name}" 
+					class="w-32 aspect-square border text-center object-contain wrap-anywhere select-none"
+				>`;
+
+	const info = `
+		<div class="flex flex-col w-full ml-3">
+			<h5 class="font-bold text-lg">${cashier.first_name} ${cashier.last_name}</h5>
+			<p class="">${cashier.user_role}</p>
+		
+			<div class="mt-2 wrap-anywhere">
+				<p class="text-right">${cashier.user_email}</p>
+				<p class="text-right">${cashier.contact_number}</p>
+				<p class="text-right">${cashier.date_added}</p>
+			</div>
+		</div>
+	`;
+
+	let action = "";
+	if (cashier.user_status === "normal") {
+		action = `
+			<div class="flex w-full mt-3 space-x-0">
+				<button class="flex-1 px-3 py-1 border-2 border-black bg-green-500 rounded-l-4xl cursor-pointer select-none">
+					Normal
+				</button>
+				<button class="flex-1 px-3 py-1 border-2 border-black rounded-r-4xl hover:bg-black hover:text-red-500 duration-150 cursor-pointer select-none">
+					Suspended
+				</button>
+			</div>
+		`;
+	} else if (cashier.user_status === "suspended") {
+		action = `
+			<div class="flex w-full mt-3 space-x-0">
+				<button class="flex-1 px-3 py-1 border-2 border-black rounded-l-4xl hover:bg-black hover:text-amber-50 duration-150 cursor-pointer select-none">
+					Normal
+				</button>
+				<button class="flex-1 px-3 py-1 border-2 border-black bg-red-500 rounded-r-4xl cursor-pointer select-none">
+					Suspended
+				</button>
+			</div>
+		`;
+	}
+
 	return `
-		<tr>
-			<td class="border px-2">${cashier.cashier_id}</td>
-			<td class="border px-2">${cashier.last_name}</td>
-			<td class="border px-2">${cashier.first_name}</td>
-			<td class="border px-2">${cashier.user_email}</td>
-			<td class="border px-2">${cashier.user_role}</td>
-			<td class="border px-2">${cashier.user_status}</td>
-			<td class="border px-2">${cashier.contact_number}</td>
-			<td class="border px-2">${cashier.date_added}</td>
-		</tr>
+		<div class="flex flex-col m-3 w-92 h-full p-3 rounded-xl bg-amber-50 drop-shadow-lg">
+			<div class="flex flex-row">
+				<div class="px-2 rounded-xl w-fit">
+					<p><b>ID:</b> ${cashier.cashier_id}</p>
+					${image}
+				</div>
+
+				${info}
+			</div>
+
+			${action}
+		</div>
 	`;
 }

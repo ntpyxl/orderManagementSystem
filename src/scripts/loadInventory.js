@@ -35,7 +35,7 @@ async function loadInventory(search = "", layout = "customer") {
 function createInventoryCard(item, layout) {
 	const image = `<img src="${BASE_URL}/images/${item.item_image}" 
 					alt="${item.item_name}" 
-					class="w-56 h-56 border text-center object-contain select-none">`;
+					class="w-56 aspect-square border text-center object-contain select-none">`;
 
 	const info = `
 		<h5 class="font-bold text-xl">${item.item_name}</h5>
