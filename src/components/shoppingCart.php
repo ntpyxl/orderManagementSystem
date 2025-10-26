@@ -1,24 +1,14 @@
 <div id="shopingCart" class="col-span-12 md:col-span-3 h-screen top-0 sticky px-2 pt-5 bg-amber-50">
     <h2 class="px-5 text-2xl font-bold text-center">Shopping Cart</h2>
 
-    <div id="cartList" class="border-2 border-gray-300 mx-2 mt-2 p-3 bg-white font-semibold h-1/2 md:h-2/3 overflow-y-auto">
-        <div class="grid grid-cols-[7fr_2fr_3fr] px-1 gap-2 border-b border-gray-500 py-2 font-bold">
+    <div class="border-2 border-gray-300 mx-2 mt-2 p-3 bg-white font-semibold h-1/2 md:h-2/3 overflow-y-auto">
+        <div class="grid grid-cols-[7fr_2fr_3fr] px-1 py-2 gap-2 border-b border-gray-500 font-bold">
             <span class="text-left">Product Name</span>
             <span class="text-center">Quantity</span>
             <span class="text-right">Price</span>
         </div>
 
-        <div class="grid grid-cols-[7fr_2fr_3fr] px-1 gap-2 border-gray-500 py-2">
-            <span class="text-left">Elmo</span>
-            <span class="text-center">x1</span>
-            <span class="text-right">900 PHP</span>
-        </div>
-
-        <div class="grid grid-cols-[7fr_2fr_3fr] px-1 gap-2 border-gray-500 py-2">
-            <span class="text-left">Elmo Elmo Elmo Elmo</span>
-            <span class="text-center">x99</span>
-            <span class="text-right">9999 PHP</span>
-        </div>
+        <div id="cartListBody"></div>
     </div>
 
     <h2 class="my-1 px-5 text-xl font-semibold text-right">

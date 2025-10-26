@@ -1,16 +1,3 @@
-/*
-$("#searchField").on("input", function (event) {
-	event.preventDefault();
-	loadUsers($(this).val());
-});
-
-
-$("#clearSearchFieldButton").on("click", () => {
-	$("#searchField").val("");
-	loadUsers();
-});
-*/
-
 async function loadInventory(search = "", layout = "customer") {
 	try {
 		const request = await fetch(`${BASE_URL}/api/inventoryManager.php`, {
@@ -20,22 +7,28 @@ async function loadInventory(search = "", layout = "customer") {
 		});
 
 		const response = await request.json();
+
 		if (
 			!response.success ||
 			!Array.isArray(response.data) ||
 			response.data.length === 0
 		) {
-			inventoryBody.innerHTML = `<p class="text-gray-500 text-center">No records found</p>`;
+			$("#inventoryBody").html(`
+				<p class="text-gray-500 text-center">No records found</p>
+			`);
 			return;
 		}
 
 		const cards = response.data
 			.map((item) => createInventoryCard(item, layout))
 			.join("");
-		inventoryBody.innerHTML = cards;
+
+		$("#inventoryBody").html(cards);
 	} catch (err) {
 		console.error(err);
-		inventoryBody.innerHTML = `<p class="text-red-500 text-center">Error loading data</p>`;
+		$("#inventoryBody").html(`
+			<p class="text-red-500 text-center">Error loading data</p>
+		`);
 	}
 }
 
