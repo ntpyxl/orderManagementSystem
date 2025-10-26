@@ -5,7 +5,20 @@ function addToCart(event) {
 	formData.itemPrice = parseInt(formData.itemPrice);
 	formData.itemQuantity = parseInt(formData.itemQuantity);
 
-	cart.push(formData);
+	if (!formData.itemQuantity || formData.itemQuantity <= 0) {
+		return;
+	}
+
+	const existingItem = cart.find(
+		(item) => item.itemName === formData.itemName
+	);
+
+	if (existingItem) {
+		existingItem.itemQuantity += formData.itemQuantity;
+	} else {
+		cart.push(formData);
+	}
+
 	updateCartDisplay();
 }
 
