@@ -10,9 +10,15 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body class="bg-cyan-100">
-    <?php include 'components/navbar.php'; ?>
+    <div class="grid grid-cols-12">
+        <div class="col-span-12 md:col-span-9">
+            <?php include 'components/navbar.php'; ?>
 
-    <div id="inventoryBody" class="flex flex-row flex-wrap mx-12 mt-8 justify-center space-x-5 space-y-5">
+            <div id="inventoryBody" class="flex flex-row flex-wrap mx-12 mt-8 justify-center space-x-5 space-y-5">
+            </div>
+        </div>
+
+        <?php include 'components/shoppingCart.php'; ?>
     </div>
 
     <script src="scripts/script.js"></script>
@@ -22,5 +28,6 @@
             loadInventory(search = "", layout = "customer");
         });
     </script>
+    <script src="scripts/cartHandler.js"></script>
 </body>
 </html>

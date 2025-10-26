@@ -52,12 +52,17 @@ function createInventoryCard(item, layout) {
 	let action = "";
 	if (layout === "customer") {
 		action = `
-			<div class="flex mt-8 mb-3 justify-between items-center">
-				<input type="number" class="w-36 h-9 pl-3 pr-1 border-2 rounded-xl focus:outline-none focus:ring-0">
+			<form onsubmit="addToCart(event)" class="flex mt-8 mb-3 justify-between items-end">
+				<input type="hidden" name="itemName" value="${item.item_name}">
+				<input type="hidden" name="itemPrice" value="${item.price}">
+				<div class="flex flex-col">
+					<label for="itemQuantityField" class="ml-2">Quantity</label>
+					<input type="number" id="itemQuantityField" name="itemQuantity" class="w-36 h-9 pl-3 pr-1 border-2 rounded-xl focus:outline-none focus:ring-0">
+				</div>
 				<button class="px-3 py-1 border-2 border-black rounded-4xl hover:bg-black hover:text-amber-50 duration-150 cursor-pointer select-none">
 					Add to Cart
 				</button>
-			</div>
+			</form>
 		`;
 	} else if (layout === "admin") {
 		action = `
