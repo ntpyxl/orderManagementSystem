@@ -1,0 +1,26 @@
+/* Chromium */
+::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+}
+
+::-webkit-scrollbar-track {
+	background: #fff7e6;
+	border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #00000080;
+	border-radius: 9999px;
+	border: 2px solid #fff7e6;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #000;
+}
+
+/* Firefox */
+* {
+	scrollbar-width: thin;
+	scrollbar-color: #000 #fef3c7;
+}
