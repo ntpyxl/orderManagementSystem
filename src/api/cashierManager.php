@@ -99,12 +99,6 @@ if($action == "getCashierById") {
 }
 
 if($action == "changeCashierStatus") {
-    if($_SESSION['cashier_id'] === $formData['cashier_id']) {
-        http_response_code(400);
-        echo json_encode(['success' => false, 'message' => 'You cannot change your own account status!']);
-        exit;
-    }
-
     if($formData['new_cashier_status'] === "suspend") {
         $formData['new_cashier_status'] = "suspended";
     } else if($formData['new_cashier_status'] === "unsuspend") {

@@ -59,7 +59,7 @@ function createCashierRow(cashier) {
 						Normal
 					</button>
 					<button
-						onclick="changeUserStatus(${cashier.cashier_id}, 'suspend')"
+						onclick="changeUserStatus(${cashier.cashier_id}, 'suspend', '${CURRENT_CASHIER_ID}')"
 						class="flex-1 px-3 py-1 border-2 border-black rounded-r-4xl hover:bg-black hover:text-red-500 duration-150 cursor-pointer select-none"
 					>
 						Suspended
@@ -70,7 +70,7 @@ function createCashierRow(cashier) {
 			action = `
 				<div class="flex w-full mt-3 space-x-0">
 					<button
-						onclick="changeUserStatus(${cashier.cashier_id}, 'unsuspend')"
+						onclick="changeUserStatus(${cashier.cashier_id}, 'unsuspend', '${CURRENT_CASHIER_ID}')"
 						class="flex-1 px-3 py-1 border-2 border-black rounded-l-4xl hover:bg-black hover:text-amber-50 duration-150 cursor-pointer select-none"
 					>
 						Normal

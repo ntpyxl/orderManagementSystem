@@ -6,9 +6,13 @@ $("#inventoryAddItemButton").on("click", function (event) {
 
 $("#inventoryAddItemCancelButton").on("click", function (event) {
 	event.preventDefault();
+	closeAddItemModal();
+});
+
+function closeAddItemModal() {
 	$("#inventoryAddItemModal").addClass("hidden").removeClass("flex");
 	$("body").removeClass("overflow-hidden");
-});
+}
 
 $("#itemImageField").on("change", function (event) {
 	const file = event.target.files[0];
@@ -41,11 +45,12 @@ async function inventoryAddItem(event) {
 
 		event.target.reset();
 		$("#previewImage").attr("src", "");
-		// close modal
 	} catch (error) {
 		toastFailed(error?.message || "Failed to add item!");
-		// close modal
 	}
+
+	closeAddItemModal();
+	event.target.reset();
 }
 
 async function uploadItemImage() {
