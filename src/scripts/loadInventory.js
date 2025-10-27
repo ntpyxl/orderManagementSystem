@@ -52,12 +52,6 @@ function createInventoryCard(item, layout) {
 				</button>
 			</form>
 		`;
-	} else if (layout === "admin") {
-		action = `
-			<button class="mt-8 px-3 py-1 border-2 border-black rounded-4xl hover:bg-black hover:text-amber-50 duration-150 cursor-pointer select-none">
-				Edit Item
-			</button>
-		`;
 	}
 
 	return `
