@@ -49,7 +49,7 @@ async function checkOutCart(event) {
 		const formData = cart;
 
 		try {
-			await apiRequest("checkOutCart", formData, "transactionProcessor");
+			await apiRequest("checkOutCart", formData, "transactionManager");
 
 			Swal.fire({
 				title: "Thank you for purchasing from Pixelshop!",

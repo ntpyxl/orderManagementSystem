@@ -21,7 +21,7 @@ if(!isset($_SESSION['cashier_id'])) {
     <?php include '../components/navbar.php'; ?>
 
     <div class="mx-5 mt-5">
-        <div class="space-x-1">
+        <div class="space-x-1 print:hidden">
             <button id="inventoryNavButton" onclick="showComponent(event, 'inventory')" class="px-3 py-1 bg-amber-50 hover:bg-amber-50 duration-150 cursor-pointer select-none">Inventory</button>
             <button id="cashiersNavButton" onclick="showComponent(event, 'cashiers')" class="px-3 py-1 bg-amber-200 hover:bg-amber-50 duration-150 cursor-pointer select-none">Cashiers</button>
             <button id="transactionsNavButton" onclick="showComponent(event, 'transactions')" class="px-3 py-1 bg-amber-200 hover:bg-amber-50 duration-150 cursor-pointer select-none">Transactions</button>

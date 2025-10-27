@@ -25,7 +25,7 @@ $parts = explode("/", trim($filePath, "/"));
 		<?php } else { ?>
 			<?php if(isset($_SESSION['cashier_id'])) {?>
 				<button
-					class="px-3 py-1 border-2 border-black rounded-4xl hover:bg-black hover:text-amber-200 duration-150 cursor-pointer select-none"
+					class="px-3 py-1 border-2 border-black rounded-4xl hover:bg-black hover:text-amber-200 duration-150 cursor-pointer select-none print:hidden"
 					onclick="window.location.href='logout.php'">
 					Logout</button>
 			<?php } ?>
