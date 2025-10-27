@@ -81,3 +81,44 @@ if($action == "getCashiers") {
 
     echo json_encode(['success' => true, 'data' => $inventoryItems]);
 }
+
+if($action == "getCashierById") {
+    $statement = $pdo->prepare(
+        'SELECT 
+            cashier_id,
+            first_name, last_name,
+            user_email, user_role, user_status,
+            contact_number,
+            date_added
+        FROM cashier WHERE cashier_id = ?'
+    );
+    $statement->execute([$formData['cashier_id']]);
+    $cashierData = $statement->fetch();
+
+    echo json_encode(['success' => true, 'data' => $cashierData]);
+}
+
+if($action == "changeCashierStatus") {
+    if($_SESSION['cashier_id'] === $formData['cashier_id']) {
+        http_response_code(400);
+        echo json_encode(['success' => false, 'message' => 'You cannot change your own account status!']);
+        exit;
+    }
+
+    if($formData['new_cashier_status'] === "suspend") {
+        $formData['new_cashier_status'] = "suspended";
+    } else if($formData['new_cashier_status'] === "unsuspend") {
+        $formData['new_cashier_status'] = "normal";
+    }
+
+    $statement = $pdo->prepare(
+        'UPDATE cashier
+        SET
+            user_status = ? 
+        WHERE cashier_id = ?'
+    );
+    $statement->execute([$formData['new_cashier_status'], $formData['cashier_id']]);
+    $cashierData = $statement->fetch();
+
+    echo json_encode(['success' => true]);
+}
