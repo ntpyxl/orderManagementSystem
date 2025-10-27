@@ -49,40 +49,41 @@ function createCashierRow(cashier) {
 	`;
 
 	let action = "";
-	if (cashier.user_status === "normal") {
-		action = `
-			<div class="flex w-full mt-3 space-x-0">
-				<button
-					class="flex-1 px-3 py-1 border-2 border-black bg-green-500 rounded-l-4xl cursor-pointer select-none"
-				>
-					Normal
-				</button>
-				<button
-					onclick="changeUserStatus(${cashier.cashier_id}, 'suspend')"
-					class="flex-1 px-3 py-1 border-2 border-black rounded-r-4xl hover:bg-black hover:text-red-500 duration-150 cursor-pointer select-none"
-				>
-					Suspended
-				</button>
-			</div>
-		`;
-	} else if (cashier.user_status === "suspended") {
-		action = `
-			<div class="flex w-full mt-3 space-x-0">
-				<button
-					onclick="changeUserStatus(${cashier.cashier_id}, 'unsuspend')"
-					class="flex-1 px-3 py-1 border-2 border-black rounded-l-4xl hover:bg-black hover:text-amber-50 duration-150 cursor-pointer select-none"
-				>
-					Normal
-				</button>
-				<button
-					class="flex-1 px-3 py-1 border-2 border-black bg-red-500 rounded-r-4xl cursor-pointer select-none"
-				>
-					Suspended
-				</button>
-			</div>
-		`;
+	if (CURRENT_USER_ROLE === "superadmin") {
+		if (cashier.user_status === "normal") {
+			action = `
+				<div class="flex w-full mt-3 space-x-0">
+					<button
+						class="flex-1 px-3 py-1 border-2 border-black bg-green-500 rounded-l-4xl cursor-pointer select-none"
+					>
+						Normal
+					</button>
+					<button
+						onclick="changeUserStatus(${cashier.cashier_id}, 'suspend')"
+						class="flex-1 px-3 py-1 border-2 border-black rounded-r-4xl hover:bg-black hover:text-red-500 duration-150 cursor-pointer select-none"
+					>
+						Suspended
+					</button>
+				</div>
+			`;
+		} else if (cashier.user_status === "suspended") {
+			action = `
+				<div class="flex w-full mt-3 space-x-0">
+					<button
+						onclick="changeUserStatus(${cashier.cashier_id}, 'unsuspend')"
+						class="flex-1 px-3 py-1 border-2 border-black rounded-l-4xl hover:bg-black hover:text-amber-50 duration-150 cursor-pointer select-none"
+					>
+						Normal
+					</button>
+					<button
+						class="flex-1 px-3 py-1 border-2 border-black bg-red-500 rounded-r-4xl cursor-pointer select-none"
+					>
+						Suspended
+					</button>
+				</div>
+			`;
+		}
 	}
-
 	return `
 		<div class="flex flex-col m-3 w-92 h-full p-3 rounded-xl bg-amber-50 drop-shadow-lg">
 			<div class="flex flex-row">

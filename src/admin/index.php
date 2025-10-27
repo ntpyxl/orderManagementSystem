@@ -37,6 +37,10 @@ if(!isset($_SESSION['cashier_id'])) {
     <span class="cashiersComponent"><?php include 'components/addCashierModal.php'; ?></span>
 
     <script src="../scripts/script.js"></script>
+    <script>
+        const CURRENT_CASHIER_ID = "<?= $_SESSION['cashier_id']?>";
+        const CURRENT_USER_ROLE = "<?= $_SESSION['user_role']?>";
+    </script>
     <script src="../scripts/adminComponentHandler.js"></script>
     <script src="../scripts/manageInventory.js"></script>
     <script src="../scripts/manageCashiers.js"></script>
