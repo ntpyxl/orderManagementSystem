@@ -74,7 +74,7 @@ if($action == "getCashiers") {
             user_email, user_role, user_status,
             contact_number,
             date_added
-        FROM cashier ORDER BY last_name ASC'
+        FROM cashier ORDER BY cashier_id ASC'
     );
     $statement->execute();
     $inventoryItems = $statement->fetchAll();
