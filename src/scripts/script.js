@@ -33,9 +33,9 @@ async function confirmAction(title, confirmText = "Yes", denyText = "No") {
 	return result.isConfirmed;
 }
 
-function alertSuccess(message) {
+function alertSuccess(title) {
 	Swal.fire({
-		title: message,
+		title: title,
 		icon: "success",
 		confirmButtonColor: "#14b8a6",
 	});

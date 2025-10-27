@@ -23,7 +23,6 @@ CREATE TABLE transactions (
     transaction_id INT AUTO_INCREMENT PRIMARY KEY,
     item_id INT NOT NULL,
     item_quantity INT NOT NULL,
-    cashier_id INT NOT NULL,
     date_transacted TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 

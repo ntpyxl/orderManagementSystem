@@ -40,6 +40,7 @@ function createInventoryCard(item, layout) {
 	if (layout === "customer") {
 		action = `
 			<form onsubmit="addToCart(event)" class="flex mt-8 mb-3 justify-between items-end">
+				<input type="hidden" name="itemId" value="${item.item_id}">
 				<input type="hidden" name="itemName" value="${item.item_name}">
 				<input type="hidden" name="itemPrice" value="${item.price}">
 				<div class="flex flex-col">

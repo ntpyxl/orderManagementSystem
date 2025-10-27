@@ -12,15 +12,18 @@
     </div>
 
     <h2 class="my-1 px-5 text-xl font-semibold text-right">
-        Total Amount: <span id="totalAmount" class="font-bold">PHP 0</span>
+        Total Amount:
+        <span class="font-bold">
+            PHP <span id="totalAmount">0.00</span>
+        </span>
     </h2>
 
     <div class="flex flex-col mr-2 items-end space-y-3">
         <input type="number" id="userPayAmount" min="0" value="" class="px-3 py-1 w-5/8 border-2 rounded-xl focus:outline-none focus:ring-0">
 
         <div class="flex flex-row space-x-3">
-            <button onclick="" class="px-3 py-1 border-2 border-black rounded-4xl hover:bg-black hover:text-amber-50 duration-150 cursor-pointer select-none">Clear Cart</button>
-            <button onclick="" class="px-3 py-1 border-2 border-black rounded-4xl hover:bg-black hover:text-amber-50 duration-150 cursor-pointer select-none">Check Out</button>
+            <button onclick="clearCart(event)" class="px-3 py-1 border-2 border-black rounded-4xl hover:bg-black hover:text-amber-50 duration-150 cursor-pointer select-none">Clear Cart</button>
+            <button onclick="checkOutCart(event)" class="px-3 py-1 border-2 border-black rounded-4xl hover:bg-black hover:text-amber-50 duration-150 cursor-pointer select-none">Check Out</button>
         </div>
     </div>
 </div>
