@@ -14,5 +14,6 @@
     ```
 
 ## Superadmin
-
-Provided superadmin password in the schema.sql file is `superadmin`
+To login using the superadmin account:
+email: `superadmin@email.com`
+password: `superadmin`
