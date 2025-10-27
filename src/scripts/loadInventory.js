@@ -1,34 +1,28 @@
 async function loadInventory(search = "", layout = "customer") {
 	try {
-		const request = await fetch(`${BASE_URL}/api/inventoryManager.php`, {
-			method: "POST",
-			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify({ action: "getInventoryItems", search }),
-		});
+		const data = await apiRequest(
+			"getInventoryItems",
+			{ search },
+			"inventoryManager"
+		);
 
-		const response = await request.json();
-
-		if (
-			!response.success ||
-			!Array.isArray(response.data) ||
-			response.data.length === 0
-		) {
+		if (!Array.isArray(data) || data.length === 0) {
 			$("#inventoryBody").html(`
 				<p class="text-gray-500 text-center">No records found</p>
 			`);
 			return;
 		}
 
-		const cards = response.data
+		const rows = data
 			.map((item) => createInventoryCard(item, layout))
 			.join("");
-
-		$("#inventoryBody").html(cards);
-	} catch (err) {
-		console.error(err);
+		$("#inventoryBody").html(rows);
+	} catch (error) {
+		console.error(error);
 		$("#inventoryBody").html(`
-			<p class="text-red-500 text-center">Error loading data</p>
+			<p class="text-gray-500 text-center">Error loading data</p>
 		`);
+		toastFailed("Failed to load inventory. Please try again.");
 	}
 }
 

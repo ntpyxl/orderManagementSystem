@@ -4,37 +4,27 @@ $(document).ready(function () {
 
 async function loadCashier(search = "") {
 	try {
-		const request = await fetch(`${BASE_URL}/api/cashierManager.php`, {
-			method: "POST",
-			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify({
-				action: "getCashiers",
-				search: search,
-			}),
-		});
+		const data = await apiRequest(
+			"getCashiers",
+			{ search },
+			"cashierManager"
+		);
 
-		const response = await request.json();
-
-		if (
-			!response.success ||
-			!Array.isArray(response.data) ||
-			response.data.length === 0
-		) {
+		if (!Array.isArray(data) || data.length === 0) {
 			$("#cashiersBody").html(`
 				<p class="text-gray-500 text-center">No records found</p>
 			`);
 			return;
 		}
 
-		const rows = response.data
-			.map((cashier) => createCashierRow(cashier))
-			.join("");
-
+		const rows = data.map(createCashierRow).join("");
 		$("#cashiersBody").html(rows);
 	} catch (error) {
+		console.error(error);
 		$("#cashiersBody").html(`
-			<p class="text-gray-500 text-center">Error loading data</p>;	
+			<p class="text-gray-500 text-center">Error loading data</p>
 		`);
+		toastFailed("Failed to load cashiers. Please try again.");
 	}
 }
 

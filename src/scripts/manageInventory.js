@@ -27,39 +27,24 @@ async function inventoryAddItem(event) {
 	formData.itemPrice = parseInt(formData.itemPrice);
 
 	try {
-		// Wait for image upload to complete
-		const uploadItemImageResult = await uploadItemImage();
-		console.log(uploadItemImageResult);
-
-		if (!uploadItemImageResult.success) {
-			throw uploadItemImageResult.message || "Image upload failed";
+		const uploadResult = await uploadItemImage();
+		if (!uploadResult.success) {
+			throw new Error(uploadResult.message || "Image upload failed");
 		}
-		formData.itemImage = uploadItemImageResult.fileName;
 
-		const response = await fetch(`${BASE_URL}/api/inventoryManager.php`, {
-			method: "POST",
-			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify({ action: "addItem", data: formData }),
-		});
+		formData.itemImage = uploadResult.fileName;
 
-		const result = await response.json();
+		await apiRequest("addItem", formData, "inventoryManager");
 
-		if (response.ok) {
-			Swal.fire({
-				title: "Successfully added item!",
-				icon: "success",
-				confirmButtonColor: "#14b8a6",
-			});
-		} else {
-			throw result.message || "Something else went wrong!";
-		}
+		toastSuccess("Successfully added item!");
+		loadInventory();
+
+		event.target.reset();
+		$("#previewImage").attr("src", "");
+		// close modal
 	} catch (error) {
-		Swal.fire({
-			title: "Failed to add item!",
-			text: error?.message || error || "Something else went wrong!",
-			icon: "error",
-			confirmButtonColor: "#ef4444",
-		});
+		toastFailed(error?.message || "Failed to add item!");
+		// close modal
 	}
 }
 
@@ -76,9 +61,14 @@ async function uploadItemImage() {
 			method: "POST",
 			body: formData,
 		});
-		return await response.json();
+		const result = await response.json();
+
+		if (!response.ok || !result.success) {
+			throw new Error(result.message || "Image upload failed");
+		}
+		return result;
 	} catch (error) {
 		console.error("Upload error:", error);
-		return { success: false, message: error };
+		return { success: false, message: error?.message || error };
 	}
 }
