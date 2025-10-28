@@ -41,7 +41,7 @@ async function inventoryAddItem(event) {
 		await apiRequest("addItem", formData, "inventoryManager");
 
 		toastSuccess("Successfully added item!");
-		loadInventory();
+		loadInventory(search = "", layout = "admin");
 
 		event.target.reset();
 		$("#previewImage").attr("src", "");
